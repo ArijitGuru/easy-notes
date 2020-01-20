@@ -3,7 +3,8 @@ package com.example.easynotes.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(value = HttpStatus.NOT_FOUND)
+@ResponseStatus(value = HttpStatus.NOT_FOUND) //This will cause Spring boot to respond with the specified HTTP status code 
+//whenever this exception is thrown from your controller.
 public class ResourceNotFoundException extends RuntimeException{
 
 	private static final long serialVersionUID = 1L;
