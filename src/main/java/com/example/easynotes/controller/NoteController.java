@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +36,7 @@ public class NoteController {
 	}
 	
 	// Create a new Note
+	@PostMapping ("/notes")
 	public Note createNote (@Valid @RequestBody Note note) {
 		// @RequestBody : bind the request body with a method parameter.
 		// @Valid       : make sure that the request body is valid.
