@@ -22,8 +22,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table (name="notes")
-@EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, allowGetters = true)
+@EntityListeners(AuditingEntityListener.class) //JPA Auditing - add this annotation here + update main application class. 
+@JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, allowGetters = true) //we don't want the clients to provide these values; Spring boot uses Jackson to convert objects to JSON
 public class Note implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -40,12 +40,12 @@ public class Note implements Serializable{
 	
 	@Column(nullable = false, updatable = false) //camel-case will be replaced by underscore
 	@Temporal(TemporalType.TIMESTAMP) // converts Java Data/Calendars to respective DB variant
-	@CreatedDate
+	@CreatedDate //we want this value automatically created whenever we create or update an entity.
 	private Date createdAt; // By default, DB column name will be 'created_at'
 	
 	@Column(name="updated_on", nullable=false ) // you can map a different column name too this way.
 	@Temporal (TemporalType.TIMESTAMP) // converts Java Data/Calendars to respective DB variant
-	@LastModifiedDate
+	@LastModifiedDate //we want this value automatically created whenever we create or update an entity.
 	private Date updatedAt; 
 
 	/**
